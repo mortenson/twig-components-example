@@ -1,0 +1,132 @@
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+    <title>twig-components-example</title>
+    <script src="dist/components.bundled.js" charset="utf-8"></script>
+    <style>
+      .name {
+        /* This should not apply if Shadow DOM is working */
+        color: red !important;
+      }
+      body {
+        margin: 0;
+      }
+      .header {
+        background: #bacf29;
+        color: white;
+        padding: 20px;
+      }
+      .header p {
+        color: #006f9f;
+      }
+      .content {
+        background: white;
+      }
+      .component {
+        padding: 20px;
+        margin-bottom: 20px;
+        max-width: 600px;
+      }
+      .component > h2,
+      .component > h3 {
+        margin-top: 0;
+        font-weight: normal;
+      }
+      .component-demo {
+        background: white;
+        padding: 20px 30px 20px 30px;
+        margin-bottom: 10px;
+        border: 1px solid lightgray;
+      }
+      code {
+        padding: 1rem;
+        margin: 1rem 0 1rem;
+        display: block;
+        background: #f3f3f3;
+      }
+      ul {
+        list-style: none;
+        margin: 1rem;
+        padding-left: .5rem;
+        border-left: 2px solid #e4e4e4;
+      }
+      ul i {
+        margin-right: .5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>twig-components-example</h1>
+      <p>An example Twig Component library using Webpack.</p>
+    </div>
+    <div class="component">
+      <h2>&lt;tce-hero&gt;</h2>
+      <p>A super-charged hero element.</p>
+      <h3>Attributes</h3>
+      <ul>
+        <li><i>src</i>An image source for the hero background.</li>
+        <li><i>text</i> Main text for the hero.</li>
+        <li><i>subtext</i> Sub-text of the hero.</li>
+        <li><i>callout-text</i> The button text for the callout.</li>
+        <li><i>callout-href</i> Where the callout button should link to.</li>
+        <li><i>align</i> The alignment of the hero text and callout. Accepts left, middle, or right values. Defaults to middle.</li>
+      </ul>
+      <h3>CSS variables</h3>
+      <ul>
+        <li><i>--font</i> The font-family of all hero text. Defaults to Helvetica.</li>
+        <li><i>--text-color</i> The color of the main hero text. Defaults to white.</li>
+        <li><i>--subtext-color</i> The color of the hero sub text. Defaults to white.</li>
+        <li><i>--callout-color</i> The color of the hero callout. Defaults to white.</li>
+        <li><i>--callout-hover-color</i> The hover color of the hero callout text. Defaults to black.</li>
+      </ul>
+      <h3>Slots</h3>
+      <ul>
+        <li><i>media</i> If the "src" attribute is omitted, you can put other background media (ex: video) in this slot.</li>
+      </ul>
+      <div class="component-demo">
+        <p>This is a basic example using an image asset.</p>
+        <code>&lt;tce-hero src=&quot;./assets/hero-2.jpg&quot; text=&quot;You can do a lot&quot; subtext=&quot;With this awesome Hero&quot; callout-text=&quot;Learn more&quot; callout-href=&quot;#test&quot;&gt;&lt;/tce-hero&gt;</code>
+        <tce-hero src="./assets/hero-2.jpg" text="You can do a lot" subtext="With this awesome Hero" callout-text="Learn more" callout-href="#test" align="left"></tce-hero>
+      </div>
+      <div class="component-demo">
+        <p>This example uses custom alignment and styling.</p>
+        <code>
+          &lt;style&gt;<br />
+          &nbsp;&nbsp;#styled-hero {<br />
+          &nbsp;&nbsp;&nbsp;--font: &quot;Times New Roman&quot;, Times, serif;<br />
+          &nbsp;&nbsp;&nbsp;--text-color: #016e9e;<br />
+          &nbsp;&nbsp;&nbsp;--subtext-color: #016e9e;<br />
+          &nbsp;&nbsp;&nbsp;--callout-color: #ffffff;<br />
+          &nbsp;&nbsp;&nbsp;--callout-hover-color: #016e9e;<br />
+          &nbsp;&nbsp;}<br />
+          &lt;/style&gt;<br />
+          &lt;tce-hero id=&quot;styled-hero&quot; src=&quot;./assets/hero-1.jpg&quot; text=&quot;Oh Buoy&quot; subtext=&quot;Set sail for pun&quot; callout-text=&quot;Engage&quot; callout-href=&quot;#test2&quot; align=&quot;middle&quot;&gt;&lt;/tce-hero&gt;
+        </code>
+        <style>
+          #styled-hero {
+            --font: "Times New Roman", Times, serif;
+            --text-color: #016e9e;
+            --subtext-color: #016e9e;
+            --callout-color: #ffffff;
+            --callout-hover-color: #016e9e;
+          }
+        </style>
+        <tce-hero id="styled-hero" src="./assets/hero-1.jpg" text="Oh Buoy" subtext="Set sail for pun" callout-text="Engage" callout-href="#test2" align="middle"></tce-hero>
+      </div>
+      <div class="component-demo">
+        <p>This example adds a looping video to the media slot, and omits the callout attribute.</p>
+        <code>
+          &lt;tce-hero text=&quot;In a pickle?&quot; subtext=&quot;Earn your chops today&quot; callout-href=&quot;#test3&quot; align=&quot;right&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;video autoplay loop src=&quot;./assets/hero-3.webm&quot; slot=&quot;media&quot; style=&quot;max-width: 100%;&quot;&gt;&lt;/video&gt;<br />
+          &lt;/tce-hero&gt;<br />
+        </code>
+        <tce-hero text="In a pickle?" subtext="Earn your chops today" callout-href="#test3" align="right">
+          <video autoplay loop src="./assets/hero-3.webm" slot="media" style="max-width: 100%;"></video>
+        </tce-hero>
+      </div>
+    </div>
+    <!--generator-placeholder-->
+  </body>
+</html>
