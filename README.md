@@ -4,6 +4,8 @@
 
 An example Twig Component library using Webpack.
 
+This project was originally generated using [generator-twig-components-webpack](https://github.com/mortenson/generator-twig-components-webpack).
+
 # Getting started
 
 To run a local webserver that shows how these components can be used, run
