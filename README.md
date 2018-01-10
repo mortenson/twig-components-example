@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mortenson/twig-components-example.svg?branch=master)](https://travis-ci.org/mortenson/twig-components-example)
+
 # twig-components-example
 
 An example Twig Component library using Webpack.
