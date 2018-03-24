@@ -5,7 +5,11 @@ export default class TceHero extends TwigBase {
     return ['src', 'text', 'subtext', 'callout-text', 'callout-href', 'align'];
   }
 
-  getTemplate() {
-    return require('./tce-hero.twig');
+  renderTemplate(variables) {
+    return require('./tce-hero.twig')(variables);
   }
+}
+
+if (!window.customElements.get('tce-hero')) {
+  window.customElements.define('tce-hero', TceHero);
 }
