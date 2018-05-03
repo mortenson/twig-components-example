@@ -3,7 +3,7 @@
   "version": "0.0.6",
   "description": "An example Twig Component library using Webpack.",
   "scripts": {
-    "test": "npm run build && bower install web-component-tester && wct",
+    "test": "npm run build && npm install -g web-component-tester && wct",
     "build": "webpack",
     "start": "webpack-dev-server",
     "eslint": "eslint ."
