@@ -1,6 +1,6 @@
 {
   "name": "twig-components-example",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "An example Twig Component library using Webpack.",
   "scripts": {
     "test": "npm run build && bower install web-component-tester && wct",
