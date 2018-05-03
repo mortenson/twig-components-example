@@ -1,0 +1,57 @@
+<style>.wrapper {
+  position: relative; }
+  .wrapper .media img {
+    max-width: 100%; }
+  .wrapper .inner {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    white-space: nowrap;
+    padding: 2rem;
+    font-family: var(--font, Helvetica, Arial, sans-serif);
+    align-items: center; }
+    .wrapper .inner.left {
+      align-items: flex-start; }
+    .wrapper .inner.right {
+      align-items: flex-end; }
+    .wrapper .inner * {
+      margin: .5rem 0 .5rem 0; }
+    .wrapper .inner h1 {
+      color: var(--text-color, white); }
+    .wrapper .inner p {
+      color: var(--subtext-color, white); }
+    .wrapper .inner a {
+      color: var(--callout-color, white);
+      border: 1px solid var(--callout-color, white);
+      text-decoration: none;
+      padding: 1em;
+      transition: all .2s; }
+      .wrapper .inner a:hover {
+        background-color: var(--callout-color, white);
+        color: var(--callout-hover-color, black); }
+</style>
+<div class="wrapper">
+  <div class="media">
+  {% if src %}
+    <img src="{{ src | escape }}" />
+  {% else %}
+    <slot name="media"></slot>
+  {% endif %}
+  </div>
+  <div class="inner {{ align | escape }}">
+    {% if text %}
+      <h1>{{ text | escape }}</h1>
+    {% endif %}
+    {% if subtext %}
+      <p>{{ subtext | escape }}</p>
+    {% endif %}
+    {% if callout_href and callout_text %}
+      <a href="{{ callout_href | escape }}">{{ callout_text | escape }}</a>
+    {% endif %}
+  </div>
+</div>
